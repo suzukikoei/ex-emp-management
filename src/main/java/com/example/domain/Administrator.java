@@ -5,18 +5,18 @@ package com.example.domain;
  * */
 public class Administrator {
 
-    /** 管理者ID */
+    /** ID */
     private Integer id;
 
-    /** 管理者の名前 */
+    /** 名前 */
     private String name;
 
-    /** 管理者のメールアドレス */
+    /** 管メールアドレス */
     private String mailAddress;
 
-    /** 管理者のパスワード */
+    /** パスワード */
     private String password;
-    
+
     public Administrator(){}
 
     public Administrator(Integer id, String name, String mailAddress, String password) {
