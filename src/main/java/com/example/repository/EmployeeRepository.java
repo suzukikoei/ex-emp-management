@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * employeesテーブルを操作するリポジトリ(Dao).
- * */
+ */
 @Repository
 public class EmployeeRepository {
 
@@ -36,14 +36,15 @@ public class EmployeeRepository {
         return employee;
             };
 
-    /** ??? */
     @Autowired
     private NamedParameterJdbcTemplate template;
 
 
     /**
      * 従業員情報を入社日の降順で取得する.
-     * */
+     *
+     * @return 従業員一覧
+     */
     public List<Employee> findAll(){
         String sql = "SELECT * FROM employees ORDER BY hire_date DESC;";
         List<Employee> employees = template.query(sql, EMPLOYEE_ROW_MAPPER);
@@ -51,15 +52,22 @@ public class EmployeeRepository {
     }
 
     /**
-     * 主キーから従業員情報を取得する
-     * */
+     * 主キーから従業員情報を取得する.
+     *
+     * @param id 従業員のID
+     * @return 検索された従業員情報
+     */
     public Employee findById(Integer id){
         String sql = "SELECT * FROM employees WHERE id = :id;";
         SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
         return template.queryForObject(sql, param, EMPLOYEE_ROW_MAPPER);
     }
 
-    /**従業員情報を変更する*/
+    /**
+     * 従業員情報を変更する.
+     * 
+     * @param employee
+     */
     public void update(Employee employee){
         SqlParameterSource param = new BeanPropertySqlParameterSource(employee);
         String sql = "UPDATE employees SET " +

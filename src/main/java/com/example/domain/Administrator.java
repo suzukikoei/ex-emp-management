@@ -2,7 +2,7 @@ package com.example.domain;
 
 /**
  * 管理者情報を表すドメイン.
- * */
+ */
 public class Administrator {
 
     /** ID */
@@ -11,7 +11,7 @@ public class Administrator {
     /** 名前 */
     private String name;
 
-    /** 管メールアドレス */
+    /** メールアドレス */
     private String mailAddress;
 
     /** パスワード */

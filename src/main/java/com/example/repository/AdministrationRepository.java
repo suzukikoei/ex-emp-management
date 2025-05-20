@@ -13,12 +13,11 @@ import java.util.List;
 
 /**
  * administratorテーブルを操作するリポジトリ(Dao).
- * */
+ */
 
 @Repository
 public class AdministrationRepository {
 
-    /** 管理者を返すrow mapper. */
     private static final RowMapper<Administrator> ADMINISTRATOR_ROW_MAPPER =
             (rs, i) -> {
         Administrator administrator = new Administrator();
@@ -29,7 +28,6 @@ public class AdministrationRepository {
         return administrator;
             };
 
-    /** ??? */
     @Autowired
     private NamedParameterJdbcTemplate template;
 
@@ -37,9 +35,8 @@ public class AdministrationRepository {
     /**
      * 管理者をDBに挿入する.
      *
-     * @param administrator
-     * @return なし
-     * */
+     * @param administrator 管理者情報
+     */
     public void insert(Administrator administrator){
         SqlParameterSource param = new BeanPropertySqlParameterSource(administrator);
         String sql = "INSERT INTO administrators (id, name, mail_address, password) VALUES " +
@@ -48,13 +45,13 @@ public class AdministrationRepository {
     }
 
     /**
-     * メールアドレスとパスわーろから管理者情報を取得する.
-     *1件も存在しない場合はnullを返す。
+     * メールアドレスとパスワードから管理者情報を取得する.
+     *　1件も存在しない場合はnullを返す。
      *
-     * @param mailAddress
-     * @param password
+     * @param mailAddress メールアドレス
+     * @param password パスワード
      * @return 検索された管理者
-     * */
+     */
     public Administrator findByMailAddressAndPassword(String mailAddress, String password){
         String sql = "SELECT * FROM administrators WHERE mail_address = :mail_address && password = :password;";
         SqlParameterSource param = new MapSqlParameterSource();

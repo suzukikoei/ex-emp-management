@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * 従業員情報を表すドメイン.
- * */
+ */
 public class Employee {
     /**　ID　*/
     private Integer id;
