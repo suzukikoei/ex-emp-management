@@ -49,6 +49,12 @@ public class EmployeeController {
         return "employee/detail";
     }
 
+    /**
+     * 従業員情報を更新する.
+     *
+     * @param form IDと扶養人数が入ったフォーム
+     * @return 従業員一覧画面
+     */
     @PostMapping("/update")
     public String update(UpdateEmployeeForm form){
         Employee employee = employeeService.showDetail(Integer.parseInt(form.getId()));
