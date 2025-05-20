@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * 管理者検索、登録、更新を行うコントローラ.
+ * 管理者情報を操作するコントローラ.
  */
-
 @Controller
 @RequestMapping("/")
 public class AdministratorController {
@@ -30,7 +29,7 @@ public class AdministratorController {
      * 管理者情報を登録する画面にフォワードする.
      *
      * @param form 管理者登録情報入力フォーム
-     * @return administrator/insert 登録画面
+     * @return 登録画面
      */
     @GetMapping("/toInsert")
     public String toInsert(InsertAdministratorForm form) {
@@ -38,10 +37,10 @@ public class AdministratorController {
     }
 
     /**
-     * 管理者情報を登録し、ログインページにフォワードする.
+     * 管理者情報を登録し、ログイン画面にフォワードする.
      *
      * @param form 管理者情報入力フォーム
-     * @return administrator/login ログインページ
+     * @return ログイン画面
      */
     @PostMapping("/insert")
     public String insert(InsertAdministratorForm form){
@@ -52,10 +51,10 @@ public class AdministratorController {
     }
 
     /**
-     * ログインページにフォワードする.
+     * ログイン画面にフォワードする.
      *
      * @param form 管理者情報を入力するフォーム
-     * @return administrator/login ログインページ
+     * @return ログイン画面
      */
     @GetMapping("/")
     public String toLogin(LoginForm form){
@@ -67,7 +66,7 @@ public class AdministratorController {
      *
      * @param form メールアドレスとパスワードが入ったフォーム
      * @param model リクエストスコープ
-     * @return redirect:/employee/showList 従業員一覧のページ
+     * @return 従業員一覧画面
      */
     @PostMapping("/login")
     public String login(LoginForm form, Model model){

@@ -59,7 +59,7 @@ public class AdministrationRepository {
         if(administrators.isEmpty()){
             return null;
         }
-        return administrators.get(0);
+        return administrators.getFirst();
     }
 
 }

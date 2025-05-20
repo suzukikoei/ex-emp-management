@@ -21,9 +21,28 @@ public class EmployeeService {
     /**
      * 全件検索する.
      *
-     * @return すべての従業員一覧
+     * @return 全従業員情報の一覧
      */
     public List<Employee> showList(){
         return employeeRepository.findAll();
+    }
+
+    /**
+     * 従業員情報を一件検索する.
+     *
+     * @param id 従業員のID
+     * @return IDで検索された従業員
+     */
+    public Employee showDetail(Integer id){
+        return employeeRepository.findById(id);
+    }
+
+    /**
+     * 従業員情報を更新する.
+     *
+     * @param employee 従業員情報
+     */
+    public void update(Employee employee){
+        employeeRepository.update(employee);
     }
 }
