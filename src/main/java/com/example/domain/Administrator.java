@@ -16,11 +16,9 @@ public class Administrator {
 
     /** 管理者のパスワード */
     private String password;
-
-    /** デフォルトコンストラクタ */
+    
     public Administrator(){}
 
-    /** コンストラクタ */
     public Administrator(Integer id, String name, String mailAddress, String password) {
         this.id = id;
         this.name = name;
