@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.domain.Administrator;
 import com.example.form.InsertAdministratorForm;
+import com.example.form.LoginForm;
 import com.example.service.AdministratorService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,12 @@ public class AdministratorController {
         return "administrator/insert";
     }
 
+    /**
+     * 管理者情報を登録し、ログインページにフォワードする.
+     *
+     * @param form 管理者情報入力フォーム
+     * @return / ログインページ
+     */
     @PostMapping("/insert")
     public String insert(InsertAdministratorForm form){
         ModelMapper modelMapper = new ModelMapper();
@@ -38,4 +45,16 @@ public class AdministratorController {
         administratorService.insert(administrator);
         return "/";
     }
+
+    /**
+     * ログインページにフォワードする.
+     *
+     * @param form 管理者情報を入力するフォーム
+     * @return administrator/login ログインページ
+     */
+    @GetMapping("/")
+    public String toLogin(LoginForm form){
+        return "administrator/login";
+    }
+
 }
