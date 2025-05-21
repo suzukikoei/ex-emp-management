@@ -52,10 +52,12 @@
                 <div class="form-group">
                   <div class="row">
                     <div class="col-sm-12">
+                      <span th:errors="*{name}" class="error-messages"></span
+                      ><br />
                       <label for="name"> 氏名: </label>
-                      <label class="error-messages">
+                      <!-- <label class="error-messages">
                         氏名を入力してください
-                      </label>
+                      </label> -->
                       <input
                         type="text"
                         name="name"
@@ -71,10 +73,15 @@
                 <div class="form-group">
                   <div class="row">
                     <div class="col-sm-12">
+                      <span
+                        th:errors="*{mailAddress}"
+                        class="error-messages"
+                      ></span
+                      ><br />
                       <label for="mailAddress"> メールアドレス: </label>
-                      <label class="error-messages">
+                      <!-- <label class="error-messages">
                         メールアドレスを入力してください
-                      </label>
+                      </label> -->
                       <input
                         type="text"
                         name="mailAddress"
@@ -90,10 +97,15 @@
                 <div class="form-group">
                   <div class="row">
                     <div class="col-sm-12">
+                      <span
+                        th:errors="*{password}"
+                        class="error-messages"
+                      ></span
+                      ><br />
                       <label for="password"> パスワード: </label>
-                      <label class="error-messages">
+                      <!-- <label class="error-messages">
                         パスワードを入力してください
-                      </label>
+                      </label> -->
                       <input
                         type="password"
                         name="password"

@@ -113,7 +113,7 @@
                     <td>
                       <img
                         src="../../static/img/e2.png"
-                        th:src="@{${employee.image}}"
+                        th:src="@{'/img/' + ${employee.image}}"
                       />
                     </td>
                   </tr>
@@ -160,7 +160,10 @@
                   <tr>
                     <th nowrap>給料</th>
                     <td>
-                      <span th:text="${employee.salary}">400000円</span>
+                      <span
+                        th:text="${#numbers.formatInteger(employee.salary, 0, 'COMMA')}"
+                      ></span
+                      >円
                     </td>
                   </tr>
                   <tr>
@@ -174,6 +177,7 @@
                   <tr>
                     <th nowrap>扶養人数</th>
                     <td>
+                      <span th:errors="*{dependentsCount}"></span>
                       <label class="error-messages">
                         扶養人数を入力してください
                       </label>

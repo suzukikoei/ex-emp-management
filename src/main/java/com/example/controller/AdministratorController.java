@@ -9,6 +9,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,7 +45,10 @@ public class AdministratorController {
      * @return ログイン画面
      */
     @PostMapping("/insert")
-    public String insert(InsertAdministratorForm form){
+    public String insert(@Validated InsertAdministratorForm form, BindingResult result){
+        if(result.hasErrors()){
+            return toInsert(form);
+        }
         ModelMapper modelMapper = new ModelMapper();
         Administrator administrator = modelMapper.map(form, Administrator.class);
         administratorService.insert(administrator);
@@ -69,7 +74,15 @@ public class AdministratorController {
      * @return 従業員一覧画面
      */
     @PostMapping("/login")
-    public String login(LoginForm form, Model model){
+    public String login(
+            @Validated LoginForm form
+            , BindingResult result
+            , Model model){
+
+        if(result.hasErrors()){
+          return toLogin(form);
+        }
+
         String mailAddress = form.getMailAddress();
         String password = form.getPassword();
         Administrator administrator = administratorService.login(mailAddress, password);
@@ -78,6 +91,7 @@ public class AdministratorController {
             return "administrator/login";
         }
         session.setAttribute("administratorName", administrator.getName());
+        //session.setAttribute("administrator", administrator);
         return "redirect:/employee/showList";
     }
 
